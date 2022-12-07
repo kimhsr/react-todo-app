@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
-import List from "./components/List";
+import Lists from "./components/Lists";
 
 export default function App() {
   const [todoData, setTodaData] = useState([]);
@@ -31,7 +31,7 @@ export default function App() {
           <h1>할 일 목록</h1>
         </div>
 
-        <List todoData={todoData} setTodaData={setTodaData} />
+        <Lists todoData={todoData} setTodaData={setTodaData} />
 
         <Form handleSubmit={handleSubmit} value={value} setValue={setValue} />
       </div>
