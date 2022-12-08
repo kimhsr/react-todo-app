@@ -8,11 +8,9 @@ const Lists = React.memo(({ todoData, setTodoData }) => {
     if (!result.destination) return;
 
     const newTodoData = todoData;
-
     // 1. 변경시키는 아이템을 배열에서 지워줍니다.
     // 2. return 값으로 지워진 아이템을 잡아줍니다.
     const [reorderedItem] = newTodoData.splice(result.source.index, 1);
-
     // 원하는 자리에 reorderedItem을 insert 해줍니다.
     newTodoData.splice(result.destination.index, 0, reorderedItem);
     setTodoData(newTodoData);
@@ -20,7 +18,7 @@ const Lists = React.memo(({ todoData, setTodoData }) => {
   return (
     <div>
       <DragDropContext onDragEnd={handleEnd}>
-        <Droppable droppableId="to-do">
+        <Droppable droppableId="to-dos">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
               {todoData.map((data, index) => (
@@ -35,9 +33,9 @@ const Lists = React.memo(({ todoData, setTodoData }) => {
                       id={data.id}
                       title={data.title}
                       completed={data.completed}
-                      provided={provided}
                       todoData={todoData}
                       setTodoData={setTodoData}
+                      provided={provided}
                       snapshot={snapshot}
                     />
                   )}
@@ -51,5 +49,4 @@ const Lists = React.memo(({ todoData, setTodoData }) => {
     </div>
   );
 });
-
 export default Lists;
