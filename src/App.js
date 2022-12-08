@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import Lists from "./components/Lists";
@@ -26,6 +26,14 @@ export default function App() {
     setValue("");
   };
 
+  const handleClick = useCallback(
+    (id) => {
+      let newTodoData = todoData.filter((data) => data.id !== id);
+      setTodaData(newTodoData);
+    },
+    [todoData]
+  );
+
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-blue-100">
       <div className="w-full p-6 m-4 bg-white rounded shadow lg:w-3/4 lg:max-w-lg">
@@ -33,7 +41,11 @@ export default function App() {
           <h1>할 일 목록</h1>
         </div>
 
-        <Lists todoData={todoData} setTodaData={setTodaData} />
+        <Lists
+          todoData={todoData}
+          setTodaData={setTodaData}
+          handleClick={handleClick}
+        />
 
         <Form handleSubmit={handleSubmit} value={value} setValue={setValue} />
       </div>
