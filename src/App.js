@@ -5,7 +5,7 @@ import Form from "./components/Form";
 import Lists from "./components/Lists";
 
 export default function App() {
-  const [todoData, setTodaData] = useState([]);
+  const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
 
   const handleSubmit = (e) => {
@@ -20,12 +20,12 @@ export default function App() {
     };
 
     // 원래 있던 할 일에 새로운 할 일 더해주기
-    setTodaData((prev) => [...prev, newTodo]);
+    setTodoData((prev) => [...prev, newTodo]);
     setValue("");
   };
 
   const handleRemoveClick = () => {
-    setTodaData([]);
+    setTodoData([]);
   };
 
   return (
@@ -36,7 +36,7 @@ export default function App() {
           <button onClick={handleRemoveClick}>Delete All</button>
         </div>
 
-        <Lists todoData={todoData} setTodaData={setTodaData} />
+        <Lists todoData={todoData} setTodoData={setTodoData} />
 
         <Form handleSubmit={handleSubmit} value={value} setValue={setValue} />
       </div>

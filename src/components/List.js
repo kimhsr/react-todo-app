@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 const List = React.memo(
-  ({ id, title, completed, provided, todoData, setTodaData, snapshot }) => {
+  ({ id, title, completed, provided, todoData, setTodoData, snapshot }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editedTitle, setEditedTitle] = useState(title);
 
@@ -13,12 +13,12 @@ const List = React.memo(
         }
         return data;
       });
-      setTodaData(newTodoData);
+      setTodoData(newTodoData);
     };
 
     const handleClick = (id) => {
       let newTodoData = todoData.filter((data) => data.id !== id);
-      setTodaData(newTodoData);
+      setTodoData(newTodoData);
     };
 
     const handleEditChange = (event) => {
@@ -34,7 +34,7 @@ const List = React.memo(
         }
         return data;
       });
-      setTodaData(newTodoData);
+      setTodoData(newTodoData);
       setIsEditing(false);
     };
 

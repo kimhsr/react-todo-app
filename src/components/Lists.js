@@ -3,7 +3,7 @@ import React from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import List from "./List";
 
-const Lists = React.memo(({ todoData, setTodaData }) => {
+const Lists = React.memo(({ todoData, setTodoData }) => {
   const handleEnd = (result) => {
     if (!result.destination) return;
 
@@ -15,7 +15,7 @@ const Lists = React.memo(({ todoData, setTodaData }) => {
 
     // 원하는 자리에 reorderedItem을 insert 해줍니다.
     newTodoData.splice(result.destination.index, 0, reorderedItem);
-    setTodaData(newTodoData);
+    setTodoData(newTodoData);
   };
   return (
     <div>
@@ -37,7 +37,7 @@ const Lists = React.memo(({ todoData, setTodaData }) => {
                       completed={data.completed}
                       provided={provided}
                       todoData={todoData}
-                      setTodaData={setTodaData}
+                      setTodoData={setTodoData}
                       snapshot={snapshot}
                     />
                   )}
