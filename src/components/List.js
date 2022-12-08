@@ -3,8 +3,6 @@ import React from "react";
 
 const List = React.memo(
   ({ id, title, completed, provided, todoData, setTodaData, snapshot }) => {
-    console.log("List Component");
-
     const handleCompleChange = (id) => {
       let newTodoData = todoData.map((data) => {
         if (data.id === id) {

@@ -1,12 +1,10 @@
 // @ts-nocheck
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import Lists from "./components/Lists";
 
 export default function App() {
-  console.log("App Component");
-
   const [todoData, setTodaData] = useState([]);
   const [value, setValue] = useState("");
 
