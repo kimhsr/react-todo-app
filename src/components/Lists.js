@@ -1,9 +1,11 @@
-import { comment } from "postcss";
+// @ts-nocheck
 import React from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import List from "./List";
 
-export default function Lists({ todoData, setTodaData }) {
+const Lists = React.memo(({ todoData, setTodaData }) => {
+  console.log("Lists Component");
+
   const handleEnd = (result) => {
     if (!result.destination) return;
 
@@ -17,7 +19,6 @@ export default function Lists({ todoData, setTodaData }) {
     newTodoData.splice(result.destination.index, 0, reorderedItem);
     setTodaData(newTodoData);
   };
-
   return (
     <div>
       <DragDropContext onDragEnd={handleEnd}>
@@ -33,6 +34,7 @@ export default function Lists({ todoData, setTodaData }) {
                   {(provided, snapshot) => (
                     <List
                       key={data.id}
+                      // @ts-ignore
                       id={data.id}
                       title={data.title}
                       completed={data.completed}
@@ -51,4 +53,6 @@ export default function Lists({ todoData, setTodaData }) {
       </DragDropContext>
     </div>
   );
-}
+});
+
+export default Lists;
