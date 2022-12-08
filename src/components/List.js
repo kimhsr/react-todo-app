@@ -2,7 +2,7 @@
 import React from "react";
 
 const List = React.memo(
-  ({ id, title, completed, provided, todoData, setTodaData, snapshot, handleClick }) => {
+  ({ id, title, completed, provided, todoData, setTodaData, snapshot }) => {
     console.log("List Component");
 
     const handleCompleChange = (id) => {
@@ -12,6 +12,11 @@ const List = React.memo(
         }
         return data;
       });
+      setTodaData(newTodoData);
+    };
+
+    const handleClick = (id) => {
+      let newTodoData = todoData.filter((data) => data.id !== id);
       setTodaData(newTodoData);
     };
 

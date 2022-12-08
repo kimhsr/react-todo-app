@@ -26,17 +26,9 @@ export default function App() {
     setValue("");
   };
 
-  const handleClick = useCallback(
-    (id) => {
-      let newTodoData = todoData.filter((data) => data.id !== id);
-      setTodaData(newTodoData);
-    },
-    [todoData]
-  );
-
   const handleRemoveClick = () => {
     setTodaData([]);
-  }
+  };
 
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-blue-100">
@@ -46,11 +38,7 @@ export default function App() {
           <button onClick={handleRemoveClick}>Delete All</button>
         </div>
 
-        <Lists
-          todoData={todoData}
-          setTodaData={setTodaData}
-          handleClick={handleClick}
-        />
+        <Lists todoData={todoData} setTodaData={setTodaData} />
 
         <Form handleSubmit={handleSubmit} value={value} setValue={setValue} />
       </div>
